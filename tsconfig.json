@@ -11,6 +11,11 @@
       "vite/client"
     ],
     "noEmit": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@routing": ["./src/routing"],
+      "@pages/*": ["./src/pages/*"],
+      "@shared/*": ["./src/shared/*"],
+    }
   }
 }
