@@ -16,6 +16,7 @@
       "@routing": ["./src/routing"],
       "@pages/*": ["./src/pages/*"],
       "@shared/*": ["./src/shared/*"],
+      "@template/*": ["./src/template/*"],
     }
   }
 }
