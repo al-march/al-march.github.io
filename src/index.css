@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.drawer-menu {
+    @apply absolute top-0 bottom-0 right-0 bg-base-200 -z-10 shadow-lg;
+    transform: translateX(100%);
+}
+
+.drawer-menu-slide-enter-active {
+    transition: all 0.3s ease;
+}
+.drawer-menu-slide-exit-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.drawer-menu-slide-enter,
+.drawer-menu-slide-exit-to {
+    transform: translateX(10px);
+}

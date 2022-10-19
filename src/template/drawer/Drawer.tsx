@@ -1,17 +1,86 @@
 import {Icon} from '@shared/components/icon';
-import {Button, Row} from '@solsy/ui';
+import {Swap} from '@shared/components/swap';
+import {BackdropClick, Button, Row} from '@solsy/ui';
+import {Show} from 'solid-js';
+import {createStore} from 'solid-js/store';
+import {Transition} from 'solid-transition-group';
 
 export const Drawer = () => {
+  const [state, setState] = createStore({
+    open: false,
+  });
+
+  function toggle() {
+    setState('open', !state.open);
+  }
+
   return (
-    <nav class="p-2 bg-base-300 shadow-lg h-full">
-      <Row orientation="col" class="gap-2">
+    <nav class="bg-base-300 shadow-lg h-full relative z-10">
+      <Transition name="drawer-menu-slide">
+        <Show when={state.open} keyed>
+          <div class="drawer-menu">
+            <Menu onClose={toggle} onBackdropClick={toggle} />
+          </div>
+        </Show>
+      </Transition>
+
+      <Row orientation="col" class="gap-2 z-10 bg-base-300 p-2 h-full">
         <Button color="ghost" square>
           <Icon name="home" />
         </Button>
-        <Button color="ghost" square>
-          <Icon name="menu" />
+
+        <Button color="ghost" square onClick={toggle}>
+          <Swap isOn={state.open}>
+            <Swap.Off>
+              <Icon name="menu" />
+            </Swap.Off>
+            <Swap.On>
+              <Icon name="close" />
+            </Swap.On>
+          </Swap>
         </Button>
       </Row>
     </nav>
+  );
+};
+
+type MenuProps = {
+  onClose?: () => void;
+  onBackdropClick?: () => void;
+};
+
+export const Menu = (props: MenuProps) => {
+  return (
+    <BackdropClick onBackdropClick={props.onBackdropClick} class="h-full">
+      <menu class="p-0 m-0">
+        <header class="flex justify-between items-center px-4 pt-2">
+          <h5 class="font-bold">Menu</h5>
+          <Button square color="ghost" onClick={props.onClose}>
+            <Icon name="chevron_left" />
+          </Button>
+        </header>
+
+        <ul class="menu w-56 p-2 rounded-box">
+          <li class="menu-title">
+            <span>Category</span>
+          </li>
+          <li>
+            <a>Item 1</a>
+          </li>
+          <li>
+            <a>Item 2</a>
+          </li>
+          <li class="menu-title">
+            <span>Category</span>
+          </li>
+          <li>
+            <a>Item 1</a>
+          </li>
+          <li>
+            <a>Item 2</a>
+          </li>
+        </ul>
+      </menu>
+    </BackdropClick>
   );
 };
