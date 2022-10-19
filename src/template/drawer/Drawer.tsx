@@ -1,7 +1,7 @@
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
 import {BackdropClick, Button, Row} from '@solsy/ui';
-import {Show} from 'solid-js';
+import {createSignal, onCleanup, onMount, Show} from 'solid-js';
 import {createStore} from 'solid-js/store';
 import {Transition} from 'solid-transition-group';
 
@@ -15,7 +15,7 @@ export const Drawer = () => {
   }
 
   return (
-    <nav class="bg-base-300 shadow-lg h-full relative z-10">
+    <nav class="shadow-lg h-full relative z-10">
       <Transition name="drawer-menu-slide">
         <Show when={state.open} keyed>
           <div class="drawer-menu">
@@ -50,13 +50,49 @@ type MenuProps = {
 };
 
 export const Menu = (props: MenuProps) => {
+  const [ref, setRef] = createSignal<HTMLElement>();
+  let prevFocused: Element | undefined;
+
+  onMount(() => {
+    prevFocused = document.activeElement;
+    focus(ref());
+  });
+
+  onCleanup(() => {
+    if (prevFocused instanceof HTMLElement) {
+      prevFocused.focus();
+    }
+  });
+
+  function focus(el?: HTMLElement) {
+    el?.focus();
+  }
+
+  function onKeyDown(e: KeyboardEvent) {
+    switch (e.code) {
+      case 'Escape':
+        props.onClose?.();
+        break;
+    }
+  }
+
   return (
     <BackdropClick onBackdropClick={props.onBackdropClick} class="h-full">
-      <menu class="p-0 m-0">
+      <menu
+        tabIndex={0}
+        class="p-0 m-0 h-full outline-none"
+        onKeyDown={onKeyDown}
+      >
         <header class="flex justify-between items-center px-4 pt-2">
           <h5 class="font-bold">Menu</h5>
-          <Button square color="ghost" onClick={props.onClose}>
-            <Icon name="chevron_left" />
+          <Button
+            ref={setRef}
+            square
+            color="ghost"
+            size="sm"
+            onClick={props.onClose}
+          >
+            <Icon name="close" />
           </Button>
         </header>
 
