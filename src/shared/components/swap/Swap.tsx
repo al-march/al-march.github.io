@@ -3,6 +3,7 @@ import {createEffect, createSignal, ParentProps} from 'solid-js';
 export type SwapProps = {
   isOn?: boolean;
   class?: string;
+  rotate?: boolean;
 };
 
 const SwapBase = (props: ParentProps<SwapProps>) => {
@@ -18,9 +19,10 @@ const SwapBase = (props: ParentProps<SwapProps>) => {
 
   return (
     <div
-      class="swap swap-rotate"
+      class="swap"
       classList={{
         [props.class || '']: !!props.class,
+        'swap-rotate': props.rotate,
         'swap-active': isOn(),
       }}
       onClick={toggle}

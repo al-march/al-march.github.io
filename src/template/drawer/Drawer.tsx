@@ -30,7 +30,7 @@ export const Drawer = () => {
         </Button>
 
         <Button color="ghost" square onClick={toggle}>
-          <Swap isOn={state.open}>
+          <Swap isOn={state.open} rotate>
             <Swap.Off>
               <Icon name="menu" />
             </Swap.Off>
