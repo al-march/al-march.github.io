@@ -1,16 +1,46 @@
 import {useTheme} from '@providers/theme';
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
-import {BackdropClick, Button, Row} from '@solsy/ui';
+import {BackdropClick, Button, DaisySize, Row} from '@solsy/ui';
+import {debounceTime, fromEvent, map, startWith} from 'rxjs';
 import {createSignal, onCleanup, onMount, Show} from 'solid-js';
 import {createStore} from 'solid-js/store';
 import {Transition} from 'solid-transition-group';
 
+const widthObserver = fromEvent(window, 'resize').pipe(
+  startWith(() => window.outerWidth),
+  debounceTime(40),
+  map(() => window.outerWidth)
+);
+
+type DrawerState = {
+  open: boolean;
+  size: DaisySize;
+};
+
 export const Drawer = () => {
   const theme = useTheme();
-  const [state, setState] = createStore({
+  const [state, setState] = createStore<DrawerState>({
     open: false,
+    size: computeSize(window.outerWidth),
   });
+
+  onMount(() => {
+    widthObserver.subscribe(setSize);
+  });
+
+  function setSize(width: number) {
+    const size = computeSize(width);
+    setState('size', size);
+  }
+
+  function computeSize(width: number): DaisySize {
+    if (width >= 500) {
+      return 'md';
+    } else {
+      return 'sm';
+    }
+  }
 
   function toggleMenu() {
     setState('open', !state.open);
@@ -30,12 +60,12 @@ export const Drawer = () => {
         </Show>
       </Transition>
 
-      <Row orientation="col" class="gap-2 z-10 bg-base-300 p-2 h-full">
-        <Button color="ghost" square>
+      <Row orientation="col" class="gap-4 z-10 bg-base-300 p-2 h-full">
+        <Button color="ghost" square size={state.size}>
           <Icon name="home" />
         </Button>
 
-        <Button color="ghost" square onClick={toggleMenu}>
+        <Button color="ghost" square onClick={toggleMenu} size={state.size}>
           <Swap isOn={state.open} rotate>
             <Swap.Off>
               <Icon name="menu" />
@@ -48,7 +78,7 @@ export const Drawer = () => {
 
         <div class="flex-1" />
 
-        <Button color="ghost" square onClick={toggleTheme}>
+        <Button color="ghost" square onClick={toggleTheme} size={state.size}>
           <Swap isOn={theme.state.mode === 'dark'} rotate>
             <Swap.Off>
               <Icon name="dark_mode" />
@@ -99,11 +129,11 @@ export const DrawerMenu = (props: MenuProps) => {
     <BackdropClick onBackdropClick={props.onBackdropClick} class="h-full">
       <menu
         tabIndex={0}
-        class="p-0 m-0 h-full outline-none"
+        class="p-0 m-0 h-full outline-none overflow-y-scroll"
         onKeyDown={onKeyDown}
       >
         <header class="flex justify-between items-center px-4 pt-2">
-          <h5 class="font-bold">Menu</h5>
+          <span class="flex-1" />
           <Button
             ref={setRef}
             square
@@ -111,7 +141,7 @@ export const DrawerMenu = (props: MenuProps) => {
             size="sm"
             onClick={props.onClose}
           >
-            <Icon name="close" />
+            <Icon name="west" />
           </Button>
         </header>
 
