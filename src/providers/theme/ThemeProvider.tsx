@@ -1,8 +1,7 @@
-import {createContext, ParentProps, useContext} from 'solid-js';
+import {themeStorage} from '@providers/theme/ThemeStorage';
+import {Theme} from '@providers/theme/theme.type';
+import {createContext, onMount, ParentProps, useContext} from 'solid-js';
 import {createStore} from 'solid-js/store';
-
-const Themes = ['dark', 'light'] as const;
-export type Theme = typeof Themes[number];
 
 export type ThemeProviderState = {
   mode: Theme;
@@ -28,8 +27,16 @@ export const ThemeProvider = (props: ParentProps) => {
     mode: 'dark',
   });
 
+  onMount(() => {
+    const theme = themeStorage.get('mode');
+    if (theme) {
+      setTheme(theme);
+    }
+  });
+
   function setTheme(theme: Theme) {
     setState('mode', theme);
+    themeStorage.set('mode', theme);
     document.documentElement.setAttribute('data-theme', theme);
   }
 
