@@ -17,11 +17,7 @@ export const Drawer = () => {
   }
 
   function toggleTheme() {
-    if (theme.state.mode === 'dark') {
-      theme.setTheme('light');
-    } else {
-      theme.setTheme('dark');
-    }
+    theme.toggle();
   }
 
   return (

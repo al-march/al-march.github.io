@@ -10,6 +10,7 @@ export type ThemeProviderState = {
 type ThemeProviderCtx = {
   state: ThemeProviderState;
   setTheme: (theme: Theme) => void;
+  toggle: () => void;
 };
 
 const ThemeProviderCtx = createContext<ThemeProviderCtx>();
@@ -40,11 +41,20 @@ export const ThemeProvider = (props: ParentProps) => {
     document.documentElement.setAttribute('data-theme', theme);
   }
 
+  function toggle() {
+    if (state.mode === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
+  }
+
   return (
     <ThemeProviderCtx.Provider
       value={{
         state,
         setTheme,
+        toggle,
       }}
     >
       {props.children}
