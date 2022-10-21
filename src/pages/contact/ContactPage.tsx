@@ -1,10 +1,10 @@
 import {Page} from '@pages/Page';
 
-export const HomePage = () => {
+export const ContactPage = () => {
   return (
     <Page>
       <div class="max-w-2xl mx-auto p-8">
-        <h1 class="text-4xl font-semibold">Home</h1>
+        <h1 class="text-4xl font-semibold">Contact</h1>
 
         <span class="divider" />
 

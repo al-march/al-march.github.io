@@ -1,10 +1,19 @@
-import {HomePage} from '@pages/home';
+import {Sections} from './Sections';
 import {Route, Routes} from '@solidjs/router';
+import {For} from 'solid-js';
 
 export const AppRouters = () => {
   return (
     <Routes>
-      <Route path="/" component={HomePage} />
+      <For each={Object.values(Sections)}>
+        {route => (
+          <Route
+            path={route.path}
+            component={route.component}
+            data={route.data}
+          />
+        )}
+      </For>
       <Route path="/*all" element={<div>Page not found :(</div>} />
     </Routes>
   );

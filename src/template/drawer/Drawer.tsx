@@ -1,6 +1,8 @@
 import {useTheme} from '@providers/theme';
+import {Sections} from '@routing/sections';
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
+import {NavLink} from '@solidjs/router';
 import {BackdropClick, Button, DaisySize, Row} from '@solsy/ui';
 import {debounceTime, fromEvent, map, startWith} from 'rxjs';
 import {createSignal, onCleanup, onMount, Show} from 'solid-js';
@@ -145,24 +147,39 @@ export const DrawerMenu = (props: MenuProps) => {
           </Button>
         </header>
 
-        <ul class="menu w-56 p-2 rounded-box">
+        <ul class="menu menu-compact w-56 p-2 rounded-box">
           <li class="menu-title">
-            <span>Category</span>
+            <span>Routes</span>
           </li>
+
           <li>
-            <a>Item 1</a>
+            <NavLink
+              href={Sections.HOME.path.toString()}
+              onClick={props.onClose}
+              end
+            >
+              <span class="capitalize">Home</span>
+            </NavLink>
           </li>
+
           <li>
-            <a>Item 2</a>
+            <NavLink
+              href={Sections.RESUME.path.toString()}
+              onClick={props.onClose}
+              end
+            >
+              <span class="capitalize">Resume</span>
+            </NavLink>
           </li>
-          <li class="menu-title">
-            <span>Category</span>
-          </li>
+
           <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <a>Item 2</a>
+            <NavLink
+              href={Sections.CONTACT.path.toString()}
+              onClick={props.onClose}
+              end
+            >
+              <span class="capitalize">Contacts</span>
+            </NavLink>
           </li>
         </ul>
       </menu>
