@@ -1,3 +1,5 @@
+import {Page} from '@pages/Page';
+
 export const HomePage = () => {
-  return <div>Home page!</div>;
+  return <Page>Home page!</Page>;
 };
