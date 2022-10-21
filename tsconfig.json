@@ -17,6 +17,8 @@
       "@pages/*": ["./src/pages/*"],
       "@shared/*": ["./src/shared/*"],
       "@template/*": ["./src/template/*"],
+      "@providers": ["./src/providers"],
+      "@providers/*": ["./src/providers/*"],
     }
   }
 }
