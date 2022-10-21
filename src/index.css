@@ -7,13 +7,20 @@
     transform: translateX(100%);
 }
 
-.drawer-menu-slide-enter-active {
-    transition: all 0.3s ease;
-}
+.drawer-menu-slide-enter-active,
 .drawer-menu-slide-exit-active {
-    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: all 0.3s ease;
 }
 .drawer-menu-slide-enter,
 .drawer-menu-slide-exit-to {
     transform: translateX(10px);
+}
+
+.fade-enter-active,
+.fade-exit-active {
+    transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-exit-to {
+    opacity: 0;
 }

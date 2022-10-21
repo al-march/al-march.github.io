@@ -3,12 +3,16 @@ import {Drawer} from '@template/drawer';
 import type {Component} from 'solid-js';
 
 const App: Component = () => {
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   return (
-    <main class="relative h-screen flex">
-      <Drawer />
-      <div class="flex-1 h-full overflow-y-scroll">
+    <main
+      class="h-screen flex"
+      style={{height: isSafari ? '-webkit-fill-available' : '100vh'}}
+    >
+      <Drawer>
         <AppRouters />
-      </div>
+      </Drawer>
     </main>
   );
 };
