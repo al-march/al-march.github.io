@@ -1,3 +1,4 @@
+import {useTheme} from '@providers/theme';
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
 import {BackdropClick, Button, Row} from '@solsy/ui';
@@ -6,12 +7,21 @@ import {createStore} from 'solid-js/store';
 import {Transition} from 'solid-transition-group';
 
 export const Drawer = () => {
+  const theme = useTheme();
   const [state, setState] = createStore({
     open: false,
   });
 
-  function toggle() {
+  function toggleMenu() {
     setState('open', !state.open);
+  }
+
+  function toggleTheme() {
+    if (theme.state.mode === 'dark') {
+      theme.setTheme('light');
+    } else {
+      theme.setTheme('dark');
+    }
   }
 
   return (
@@ -19,7 +29,7 @@ export const Drawer = () => {
       <Transition name="drawer-menu-slide">
         <Show when={state.open} keyed>
           <div class="drawer-menu">
-            <Menu onClose={toggle} onBackdropClick={toggle} />
+            <DrawerMenu onClose={toggleMenu} onBackdropClick={toggleMenu} />
           </div>
         </Show>
       </Transition>
@@ -29,13 +39,26 @@ export const Drawer = () => {
           <Icon name="home" />
         </Button>
 
-        <Button color="ghost" square onClick={toggle}>
+        <Button color="ghost" square onClick={toggleMenu}>
           <Swap isOn={state.open} rotate>
             <Swap.Off>
               <Icon name="menu" />
             </Swap.Off>
             <Swap.On>
               <Icon name="close" />
+            </Swap.On>
+          </Swap>
+        </Button>
+
+        <div class="flex-1" />
+
+        <Button color="ghost" square onClick={toggleTheme}>
+          <Swap isOn={theme.state.mode === 'dark'} rotate>
+            <Swap.Off>
+              <Icon name="dark_mode" />
+            </Swap.Off>
+            <Swap.On>
+              <Icon name="light_mode" />
             </Swap.On>
           </Swap>
         </Button>
@@ -49,7 +72,7 @@ type MenuProps = {
   onBackdropClick?: () => void;
 };
 
-export const Menu = (props: MenuProps) => {
+export const DrawerMenu = (props: MenuProps) => {
   const [ref, setRef] = createSignal<HTMLElement>();
   let prevFocused: Element | undefined;
 
