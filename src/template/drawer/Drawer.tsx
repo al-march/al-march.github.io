@@ -221,24 +221,14 @@ export const DrawerMenu = (props: MenuProps) => {
         tabIndex={0}
         class="p-0 m-0 h-full outline-none overflow-y-scroll"
         onKeyDown={onKeyDown}
-        ref={props.ref}
+        ref={el => {
+          props.ref(el);
+          setRef(el);
+        }}
       >
-        <header class="flex justify-between items-center px-4 pt-2">
-          <span class="flex-1" />
-          <Button
-            ref={setRef}
-            square
-            color="ghost"
-            size="sm"
-            onClick={props.onClose}
-          >
-            <Icon name="west" />
-          </Button>
-        </header>
-
         <ul class="menu menu-compact w-56 p-2 rounded-box">
           <li class="menu-title">
-            <span>Routes</span>
+            <span>Main Sections</span>
           </li>
 
           <li>
@@ -247,6 +237,7 @@ export const DrawerMenu = (props: MenuProps) => {
               onClick={props.onClose}
               end
             >
+              <Icon name="home" />
               <span class="capitalize">Home</span>
             </NavLink>
           </li>
@@ -257,6 +248,7 @@ export const DrawerMenu = (props: MenuProps) => {
               onClick={props.onClose}
               end
             >
+              <Icon name="badge" />
               <span class="capitalize">Resume</span>
             </NavLink>
           </li>
@@ -267,6 +259,7 @@ export const DrawerMenu = (props: MenuProps) => {
               onClick={props.onClose}
               end
             >
+              <Icon name="phone_in_talk" />
               <span class="capitalize">Contacts</span>
             </NavLink>
           </li>
