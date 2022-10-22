@@ -3,7 +3,7 @@ import {Sections} from '@routing/sections';
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
 import {NavLink} from '@solidjs/router';
-import {BackdropClick, Button, DaisySize, Row} from '@solsy/ui';
+import {BackdropClick, Button, DaisySize, Divider, Menu, Row} from '@solsy/ui';
 import {debounceTime, fromEvent, map, startWith} from 'rxjs';
 import {createSignal, onCleanup, onMount, ParentProps, Show} from 'solid-js';
 import {createStore} from 'solid-js/store';
@@ -86,7 +86,7 @@ export const Drawer = (props: ParentProps) => {
           </Show>
         </Transition>
 
-        <Row orientation="col" class="gap-4 z-10 bg-base-300 p-2 h-full">
+        <Row orientation="col" class="md:gap-4 z-10 bg-base-300 p-2 h-full">
           <Button color="ghost" square size={state.size}>
             <Icon name="home" />
           </Button>
@@ -102,7 +102,49 @@ export const Drawer = (props: ParentProps) => {
             </Swap>
           </Button>
 
+          <Divider class="m-0" />
+
           <div class="flex-1" />
+
+          <Menu>
+            <Menu.Trigger>
+              <Button color="ghost" square size={state.size}>
+                <Icon name="mail" />
+              </Button>
+            </Menu.Trigger>
+
+            <Menu.Dropdown placement="right" offset={[0, 12]} compact>
+              <Menu.Item>
+                <Icon name="send" /> Send
+              </Menu.Item>
+              <Menu.Item>
+                <Icon name="content_copy" /> Copy
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+
+          <Menu>
+            <Menu.Trigger>
+              <Button color="ghost" square size={state.size}>
+                <Icon>
+                  <i class="fa-brands fa-telegram" />
+                </Icon>
+              </Button>
+            </Menu.Trigger>
+
+            <Menu.Dropdown placement="right" offset={[0, 12]} compact>
+              <Menu.Item>
+                <Icon name="send" /> Send
+              </Menu.Item>
+              <Menu.Item>
+                <Icon name="content_copy" /> Copy
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+
+          <div class="flex-1" />
+
+          <Divider class="m-0" />
 
           <Button color="ghost" square onClick={toggleTheme} size={state.size}>
             <Swap isOn={theme.state.mode === 'dark'} rotate>
