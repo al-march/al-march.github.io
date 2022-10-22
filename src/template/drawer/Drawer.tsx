@@ -142,6 +142,25 @@ export const Drawer = (props: ParentProps) => {
             </Menu.Dropdown>
           </Menu>
 
+          <Menu>
+            <Menu.Trigger>
+              <Button color="ghost" square size={state.size}>
+                <Icon>
+                  <i class="fa-brands fa-github" />
+                </Icon>
+              </Button>
+            </Menu.Trigger>
+
+            <Menu.Dropdown placement="right" offset={[0, 12]} compact>
+              <Menu.Item>
+                <Icon name="send" /> Send
+              </Menu.Item>
+              <Menu.Item>
+                <Icon name="content_copy" /> Copy
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+
           <div class="flex-1" />
 
           <Divider class="m-0" />
