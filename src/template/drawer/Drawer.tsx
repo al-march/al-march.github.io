@@ -1,8 +1,8 @@
 import {useTheme} from '@providers/theme';
-import {Sections} from '@routing/sections';
+import {Paths} from '@routing/paths';
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
-import {NavLink} from '@solidjs/router';
+import {Link, NavLink} from '@solidjs/router';
 import {BackdropClick, Button, DaisySize, Divider, Menu, Row} from '@solsy/ui';
 import {debounceTime, fromEvent, map, startWith} from 'rxjs';
 import {createSignal, onCleanup, onMount, ParentProps, Show} from 'solid-js';
@@ -86,10 +86,15 @@ export const Drawer = (props: ParentProps) => {
           </Show>
         </Transition>
 
-        <Row orientation="col" class="md:gap-4 z-10 bg-base-300 p-2 h-full">
-          <Button color="ghost" square size={state.size}>
-            <Icon name="home" />
-          </Button>
+        <Row
+          orientation="col"
+          class="gap-2 sm:gap-0 z-10 bg-base-300 p-2 h-full overflow-y-scroll"
+        >
+          <Link href={Paths.HOME.href}>
+            <Button color="ghost" square size={state.size}>
+              <Icon name="home" />
+            </Button>
+          </Link>
 
           <Button color="ghost" square onClick={toggleMenu} size={state.size}>
             <Swap isOn={state.open} rotate>
@@ -251,33 +256,21 @@ export const DrawerMenu = (props: MenuProps) => {
           </li>
 
           <li>
-            <NavLink
-              href={Sections.HOME.path.toString()}
-              onClick={props.onClose}
-              end
-            >
+            <NavLink href={Paths.HOME.href} onClick={props.onClose} end>
               <Icon name="home" />
               <span class="capitalize">Home</span>
             </NavLink>
           </li>
 
           <li>
-            <NavLink
-              href={Sections.RESUME.path.toString()}
-              onClick={props.onClose}
-              end
-            >
+            <NavLink href={Paths.RESUME.href} onClick={props.onClose} end>
               <Icon name="badge" />
               <span class="capitalize">Resume</span>
             </NavLink>
           </li>
 
           <li>
-            <NavLink
-              href={Sections.CONTACT.path.toString()}
-              onClick={props.onClose}
-              end
-            >
+            <NavLink href={Paths.CONTACT.href} onClick={props.onClose} end>
               <Icon name="phone_in_talk" />
               <span class="capitalize">Contacts</span>
             </NavLink>

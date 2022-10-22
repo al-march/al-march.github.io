@@ -1,11 +1,11 @@
-import {Sections} from './Sections';
+import {Paths} from './paths';
 import {Route, Routes} from '@solidjs/router';
 import {For} from 'solid-js';
 
 export const AppRouters = () => {
   return (
     <Routes>
-      <For each={Object.values(Sections)}>
+      <For each={Object.values(Paths)}>
         {route => (
           <Route
             path={route.path}
