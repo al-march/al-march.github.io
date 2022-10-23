@@ -166,8 +166,6 @@ export const Drawer = (props: ParentProps) => {
             </Menu.Dropdown>
           </Menu>
 
-          <div class="flex-1" />
-
           <Divider class="m-0" />
 
           <Button color="ghost" square onClick={toggleTheme} size={state.size}>
@@ -199,7 +197,42 @@ export const Drawer = (props: ParentProps) => {
             </Show>
           </Transition>
 
-          {props.children}
+          <div class="flex-1 flex flex-col h-full">
+            <nav class="p-2">
+              <Row class="gap-2 justify-end">
+                <NavLink
+                  href={Paths.HOME.href}
+                  class="btn btn-ghost btn-sm gap-2"
+                  activeClass="btn-active"
+                  end
+                >
+                  <Icon name="home" />
+                  <span class="capitalize">Home</span>
+                </NavLink>
+
+                <NavLink
+                  href={Paths.RESUME.href}
+                  class="btn btn-ghost btn-sm gap-2"
+                  activeClass="btn-active"
+                  end
+                >
+                  <Icon name="badge" />
+                  <span class="capitalize">Resume</span>
+                </NavLink>
+
+                <NavLink
+                  href={Paths.CONTACT.href}
+                  class="btn btn-ghost btn-sm gap-2"
+                  activeClass="btn-active"
+                  end
+                >
+                  <Icon name="phone_in_talk" />
+                  <span class="capitalize">Contacts</span>
+                </NavLink>
+              </Row>
+            </nav>
+            {props.children}
+          </div>
         </div>
       </div>
     </div>
