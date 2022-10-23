@@ -2,7 +2,7 @@ import {useTheme} from '@providers/theme';
 import {Paths} from '@routing/paths';
 import {Icon} from '@shared/components/icon';
 import {Swap} from '@shared/components/swap';
-import {Link, NavLink} from '@solidjs/router';
+import {NavLink} from '@solidjs/router';
 import {BackdropClick, Button, DaisySize, Divider, Menu, Row} from '@solsy/ui';
 import {debounceTime, fromEvent, map, startWith} from 'rxjs';
 import {createSignal, onCleanup, onMount, ParentProps, Show} from 'solid-js';
@@ -10,9 +10,9 @@ import {createStore} from 'solid-js/store';
 import {Transition} from 'solid-transition-group';
 
 const widthObserver = fromEvent(window, 'resize').pipe(
-  startWith(() => window.outerWidth),
+  startWith(() => window.innerWidth),
   debounceTime(40),
-  map(() => window.outerWidth)
+  map(() => window.innerWidth)
 );
 
 type DrawerState = {
@@ -40,7 +40,7 @@ export const Drawer = (props: ParentProps) => {
   }
 
   function computeSize(width: number): DaisySize {
-    if (width >= 500) {
+    if (width >= 640) {
       return 'md';
     } else {
       return 'sm';
@@ -81,21 +81,13 @@ export const Drawer = (props: ParentProps) => {
                 onClose={toggleMenu}
                 onBackdropClick={toggleMenu}
                 ref={setMenuRef}
+                size={state.size}
               />
             </div>
           </Show>
         </Transition>
 
-        <Row
-          orientation="col"
-          class="gap-2 sm:gap-0 z-10 bg-base-300 p-2 h-full overflow-y-scroll"
-        >
-          <Link href={Paths.HOME.href}>
-            <Button color="ghost" square size={state.size}>
-              <Icon name="home" />
-            </Button>
-          </Link>
-
+        <Row orientation="col" class="drawer-row">
           <Button color="ghost" square onClick={toggleMenu} size={state.size}>
             <Swap isOn={state.open} rotate>
               <Swap.Off>
@@ -198,39 +190,46 @@ export const Drawer = (props: ParentProps) => {
           </Transition>
 
           <div class="flex-1 flex flex-col h-full">
-            <nav class="p-2">
-              <Row class="gap-2 justify-end">
-                <NavLink
-                  href={Paths.HOME.href}
-                  class="btn btn-ghost btn-sm gap-2"
-                  activeClass="btn-active"
-                  end
-                >
-                  <Icon name="home" />
-                  <span class="capitalize">Home</span>
-                </NavLink>
+            <Show when={state.size !== 'sm'} keyed>
+              <nav class="p-2">
+                <Row class="gap-1 justify-end">
+                  <NavLink
+                    href={Paths.HOME.href}
+                    class="btn btn-ghost btn-sm gap-2"
+                    activeClass="btn-active"
+                    end
+                  >
+                    <Icon name="home" />
+                    <span class="capitalize">Home</span>
+                  </NavLink>
 
-                <NavLink
-                  href={Paths.RESUME.href}
-                  class="btn btn-ghost btn-sm gap-2"
-                  activeClass="btn-active"
-                  end
-                >
-                  <Icon name="badge" />
-                  <span class="capitalize">Resume</span>
-                </NavLink>
+                  <Divider orientation="horizontal" class="m-0" />
 
-                <NavLink
-                  href={Paths.CONTACT.href}
-                  class="btn btn-ghost btn-sm gap-2"
-                  activeClass="btn-active"
-                  end
-                >
-                  <Icon name="phone_in_talk" />
-                  <span class="capitalize">Contacts</span>
-                </NavLink>
-              </Row>
-            </nav>
+                  <NavLink
+                    href={Paths.RESUME.href}
+                    class="btn btn-ghost btn-sm gap-2"
+                    activeClass="btn-active"
+                    end
+                  >
+                    <Icon name="badge" />
+                    <span class="capitalize">Resume</span>
+                  </NavLink>
+
+                  <Divider orientation="horizontal" class="m-0" />
+
+                  <NavLink
+                    href={Paths.CONTACT.href}
+                    class="btn btn-ghost btn-sm gap-2"
+                    activeClass="btn-active"
+                    end
+                  >
+                    <Icon name="phone_in_talk" />
+                    <span class="capitalize">Contacts</span>
+                  </NavLink>
+                </Row>
+              </nav>
+            </Show>
+
             {props.children}
           </div>
         </div>
@@ -243,6 +242,7 @@ type MenuProps = {
   ref?: (el: HTMLElement) => void;
   onClose?: () => void;
   onBackdropClick?: () => void;
+  size?: DaisySize;
 };
 
 export const DrawerMenu = (props: MenuProps) => {
@@ -276,7 +276,10 @@ export const DrawerMenu = (props: MenuProps) => {
     <BackdropClick onBackdropClick={props.onBackdropClick} class="h-full">
       <menu
         tabIndex={0}
-        class="p-0 m-0 h-full outline-none overflow-y-scroll"
+        class="p-0 m-0 h-full outline-none overflow-y-scroll flex"
+        classList={{
+          'items-end': props.size === 'sm',
+        }}
         onKeyDown={onKeyDown}
         ref={el => {
           props.ref(el);

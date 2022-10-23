@@ -28,28 +28,16 @@ function RouterTransition(props: ParentProps) {
       mode="outin"
       onBeforeEnter={el => ((el as HTMLElement).style.opacity = '0')}
       onEnter={(el, done) => {
-        const a = el.animate(
-          [
-            {opacity: 0, transform: 'translateY(100%)'},
-            {opacity: 1, transform: 'translateY(0)'},
-          ],
-          {
-            duration: 280,
-          }
-        );
+        const a = el.animate([{opacity: 0}, {opacity: 1}], {
+          duration: 280,
+        });
         return a.finished.then(done);
       }}
       onAfterEnter={el => ((el as HTMLElement).style.opacity = '1')}
       onExit={(el, done) => {
-        const a = el.animate(
-          [
-            {opacity: 1, transform: 'translateY(0)'},
-            {opacity: 0, transform: 'translateY(100%)'},
-          ],
-          {
-            duration: 150,
-          }
-        );
+        const a = el.animate([{opacity: 1}, {opacity: 0}], {
+          duration: 150,
+        });
         return a.finished.then(done);
       }}
     >

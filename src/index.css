@@ -24,3 +24,13 @@
 .fade-exit-to {
     opacity: 0;
 }
+
+.drawer-row {
+    @apply gap-2 z-10 bg-base-300 p-2 h-full overflow-y-scroll;
+}
+
+@media screen and  (max-width: 640px) {
+    .drawer-row {
+        @apply flex-col-reverse;
+    }
+}

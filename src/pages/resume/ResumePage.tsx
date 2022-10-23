@@ -20,7 +20,7 @@ export const ResumePage = () => {
                 Consequatur eius maxime non?
               </p>
 
-              <Row class="gap-2 pt-2">
+              <Row class="gap-2 pt-2 flex-wrap">
                 <Badge color="primary">Angular</Badge>
                 <Badge color="secondary">Angular.js</Badge>
                 <Badge color="primary">Webpack</Badge>
@@ -38,7 +38,7 @@ export const ResumePage = () => {
                 Consequatur eius maxime non?
               </p>
 
-              <Row class="gap-2 pt-2">
+              <Row class="gap-2 pt-2 flex-wrap">
                 <Badge color="primary">Angular</Badge>
                 <Badge color="secondary">Angular Material</Badge>
                 <Badge color="primary">NgXs</Badge>
@@ -55,7 +55,7 @@ export const ResumePage = () => {
                 Consequatur eius maxime non?
               </p>
 
-              <Row class="gap-2 pt-2">
+              <Row class="gap-2 pt-2 flex-wrap">
                 <Badge color="primary">Angular</Badge>
                 <Badge color="secondary">Angular Material</Badge>
                 <Badge color="primary">Docker</Badge>
