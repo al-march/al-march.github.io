@@ -1,81 +1,32 @@
 ---
+import Arrow from '../components/Arrow.astro';
+import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+<Layout title="Portfolio">
+	<main class="text-white">
+		<section class="h-screen bg-[#140D0C] flex flex-col gap-4 p-20 py-6 justify-center items-center">
+			<div class="container h-full flex flex-col justify-between gap-4">
+				<header class="flex justify-center items-center">
+					<Logo className="w-12"/>
+				</header>
+	
+				<div class="flex-1"></div>
+
+				<div class="flex flex-col max-w-[420px]">
+					<span class="text-sm opacity-75">40.990463, 29.136827</span>
+					<h1 class="text-2xl font-bold pb-3">Who am I?</h1>
+					<p class="opacity-80">
+						Metehan is a passionate interface and experience designer from Istanbul, Turkey. I’m working on mobile application and web design project. If you need more detail you can see my
+					</p>
+				</div>
+
+				<div class="flex flex-col gap-4 justify-center items-center">
+					<Arrow className="w-6"/>
+					<span>Scroll down</span>
+				</div>
+			</div>
+		</section>
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
