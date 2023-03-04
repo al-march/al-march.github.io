@@ -4,7 +4,7 @@ import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Portfolio">
+<Layout title="Portfolio" description="My work experience">
 	<main>
 		<section class="h-screen bg-[#140D0C] text-white flex flex-col gap-4 p-20 py-6 justify-center items-center">
 			<div class="container h-full flex flex-col justify-between gap-4">
@@ -111,6 +111,37 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 			</div>
 		</section>
+
+		<footer class="flex flex-col p-20 py-6 gap-6 text-white bg-[#140D0C]">
+			<h3 class="text-4xl font-bold py-10">
+				Contact with me
+			</h3>
+
+			<section>
+				<p class="font-bold text-2xl">Contact</p>
+				<a class="c-accent" href="mailto:valverin95@gmail.com">valverin95@gmail.com</a>
+			</section>
+
+			<section>
+				<p class="font-bold text-2xl">Social</p>
+				<div class="flex gap-4">
+					<a class="c-accent underline" href="#">Linkedln</a>
+					<a class="c-accent underline" href="#">Telegram</a>
+					<a class="c-accent underline" href="#">Habr</a>
+					<a class="c-accent underline" href="#">Github</a>
+				</div>
+			</section>
+
+			<div class="flex-1"></div>
+
+			<div class="pb-10">
+				<p class="opacity-50 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil velit nulla laboriosam.</p>
+				<p class="text-center">
+					<span class="opacity-50">Developed by </span>
+					<a class="c-accent" href="https://github.com/al-march">al-march</a>
+				</p>
+			</div>
+		</footer>
 	</main>
 </Layout>
 
@@ -127,5 +158,9 @@ import Layout from '../layouts/Layout.astro';
 		.icon {
 			@apply transition-all;
 		}
+	}
+
+	.c-accent {
+		color: #FE5900;
 	}
 </style>
