@@ -5,11 +5,11 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Portfolio">
-	<main class="text-white">
-		<section class="h-screen bg-[#140D0C] flex flex-col gap-4 p-20 py-6 justify-center items-center">
+	<main>
+		<section class="h-screen bg-[#140D0C] text-white flex flex-col gap-4 p-20 py-6 justify-center items-center">
 			<div class="container h-full flex flex-col justify-between gap-4">
 				<header class="flex justify-center items-center">
-					<Logo className="w-12"/>
+					<Logo class="w-12"/>
 				</header>
 	
 				<div class="flex-1"></div>
@@ -22,11 +22,110 @@ import Layout from '../layouts/Layout.astro';
 					</p>
 				</div>
 
-				<div class="flex flex-col gap-4 justify-center items-center">
-					<Arrow className="w-6"/>
-					<span>Scroll down</span>
+				<a class="scroll-down" href="#sect-1">
+					<Arrow class="w-6 icon"/>
+					<span class="text">Scroll down</span>
+				</a>
+			</div>
+		</section>
+
+		<section id="sect-1" class="h-screen p-20 py-6 flex items-center bg-[#F6F7FB]">
+			<div class="w-full flex gap-4 justify-between items-center">
+				<article class="flex flex-col gap-2 flex-1">
+					<span class="text-sm opacity-70">Sept 3 2021</span>
+					<h2 class="font-bold text-2xl">VK</h2>
+					<p class="max-w-[390px]">
+						This concept is a news app. I have specified a limited color palette to give users maximum focus on the content. I used a serif font as I thought it would be suitable for a news app
+					</p>
+
+					<article class="flex gap-2 items-center">
+						<p class="opacity-60">Stack: </p>
+
+						<div class="opacity-80">
+							<span>Angular</span>,
+							<span>React</span>,
+							<span>Java</span>
+						</div>
+					</article>
+
+					<a class="te underline" href="#">See more</a>
+				</article>
+
+				<div class="flex justify-center items-center flex-1">
+					VK
+				</div>
+			</div>
+		</section>
+
+		<section id="sect-1" class="h-screen p-20 py-6 flex items-center bg-[#FFF9FA]">
+			<div class="w-full flex gap-4 justify-between items-center">
+				<article class="flex flex-col gap-2 flex-1">
+					<span class="text-sm opacity-70">Sep 20 2020 — Aug 10 2021</span>
+					<h2 class="font-bold text-2xl">MTS</h2>
+					<p class="max-w-[390px]">
+						This concept is a news app. I have specified a limited color palette to give users maximum focus on the content. I used a serif font as I thought it would be suitable for a news app
+					</p>
+
+					<article class="flex gap-2 items-center">
+						<p class="opacity-60">Stack: </p>
+
+						<div class="opacity-80">
+							<span>Angular</span>,
+							<span>Node.js</span>
+						</div>
+					</article>
+
+					<a class="te underline" href="#">See more</a>
+				</article>
+
+				<div class="flex justify-center items-center flex-1">
+					MTS
+				</div>
+			</div>
+		</section>
+
+		<section id="sect-1" class="h-screen p-20 py-6 flex items-center bg-[#ECF1EF]">
+			<div class="w-full flex gap-4 justify-between items-center">
+				<article class="flex flex-col gap-2 flex-1">
+					<span class="text-sm opacity-70">Feb 12 2018 — Aug 30 2020</span>
+					<h2 class="font-bold text-2xl">FMedia</h2>
+					<p class="max-w-[390px]">
+						This concept is a news app. I have specified a limited color palette to give users maximum focus on the content. I used a serif font as I thought it would be suitable for a news app
+					</p>
+
+					<article class="flex gap-2 items-center">
+						<p class="opacity-60">Stack: </p>
+
+						<div class="opacity-80">
+							<span>Angular</span>,
+							<span>Go</span>,
+							<span>Docker</span>,
+						</div>
+					</article>
+
+					<a class="te underline" href="#">See more</a>
+				</article>
+
+				<div class="flex justify-center items-center flex-1">
+					FMedia
 				</div>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<style lang="scss">
+	.scroll-down {
+		@apply flex flex-col gap-4 justify-center items-center;
+
+		&:hover {
+			.icon {
+				@apply scale-110 translate-y-1;
+			}
+		}
+
+		.icon {
+			@apply transition-all;
+		}
+	}
+</style>
