@@ -6,21 +6,24 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Portfolio" description="My work experience">
 	<main>
-		<section class="h-screen bg-[#140D0C] text-white flex flex-col gap-4 p-20 py-6 justify-center items-center">
+		<section class="min-h-screen bg-[#140D0C] text-white flex flex-col gap-4 p-4 md:p-20 py-6 justify-center items-center">
 			<div class="container h-full flex flex-col justify-between gap-4">
 				<header class="flex justify-center items-center">
 					<Logo class="w-12"/>
 				</header>
-	
+
+				<div class="flex-1"></div>
 				<div class="flex-1"></div>
 
-				<div class="flex flex-col max-w-[420px]">
+				<div class="flex flex-col">
 					<span class="text-sm opacity-75">40.990463, 29.136827</span>
-					<h1 class="text-2xl font-bold pb-3">Who am I?</h1>
-					<p class="opacity-80">
+					<h1 class="text-9xl font-bold pb-3 leading-[0.8]">Who <span class="whitespace-nowrap">am I?</span></h1>
+					<p class="opacity-80 max-w-[600px]">
 						Metehan is a passionate interface and experience designer from Istanbul, Turkey. I’m working on mobile application and web design project. If you need more detail you can see my
 					</p>
 				</div>
+
+				<div class="flex-1"></div>
 
 				<a class="scroll-down" href="#sect-1">
 					<Arrow class="w-6 icon"/>
@@ -29,8 +32,8 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="sect-1" class="h-screen p-20 py-6 flex items-center bg-[#F6F7FB]">
-			<div class="w-full flex gap-4 justify-between items-center">
+		<section id="sect-1" class="min-h-screen p-4 md:p-20 py-6 flex items-center bg-[#F6F7FB]">
+			<div class="w-full flex flex-col-reverse md:flex-row gap-4 justify-between items-center">
 				<article class="flex flex-col gap-2 flex-1">
 					<span class="text-sm opacity-70">Sept 3 2021</span>
 					<h2 class="font-bold text-2xl">VK</h2>
@@ -57,8 +60,8 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="sect-1" class="h-screen p-20 py-6 flex items-center bg-[#FFF9FA]">
-			<div class="w-full flex gap-4 justify-between items-center">
+		<section id="sect-1" class="min-h-screen p-4 md:p-20 py-6 flex items-center bg-[#FFF9FA]">
+			<div class="w-full flex flex-col-reverse md:flex-row gap-4 justify-between items-center">
 				<article class="flex flex-col gap-2 flex-1">
 					<span class="text-sm opacity-70">Sep 20 2020 — Aug 10 2021</span>
 					<h2 class="font-bold text-2xl">MTS</h2>
@@ -84,8 +87,8 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="sect-1" class="h-screen p-20 py-6 flex items-center bg-[#ECF1EF]">
-			<div class="w-full flex gap-4 justify-between items-center">
+		<section id="sect-1" class="min-h-screen p-4 md:p-20 py-6 flex items-center bg-[#ECF1EF]">
+			<div class="w-full flex flex-col-reverse md:flex-row gap-4 justify-between items-center">
 				<article class="flex flex-col gap-2 flex-1">
 					<span class="text-sm opacity-70">Feb 12 2018 — Aug 30 2020</span>
 					<h2 class="font-bold text-2xl">FMedia</h2>
@@ -112,7 +115,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<footer class="flex flex-col p-20 py-6 gap-6 text-white bg-[#140D0C]">
+		<footer class="flex flex-col p-4 md:p-20 py-6 gap-6 text-white bg-[#140D0C]">
 			<h3 class="text-4xl font-bold py-10">
 				Contact with me
 			</h3>
@@ -146,21 +149,25 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style lang="scss">
-	.scroll-down {
-		@apply flex flex-col gap-4 justify-center items-center;
+.sect {
+	@apply p-4 md:p-4 md:p-20 py-6;
+}
 
-		&:hover {
-			.icon {
-				@apply scale-110 translate-y-1;
-			}
-		}
+.scroll-down {
+	@apply flex flex-col gap-4 justify-center items-center;
 
+	&:hover {
 		.icon {
-			@apply transition-all;
+			@apply scale-110 translate-y-1;
 		}
 	}
 
-	.c-accent {
-		color: #FE5900;
+	.icon {
+		@apply transition-all;
 	}
+}
+
+.c-accent {
+	color: #FE5900;
+}
 </style>
