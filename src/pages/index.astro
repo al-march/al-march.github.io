@@ -16,8 +16,10 @@ import Layout from '../layouts/Layout.astro';
 				<div class="flex-1"></div>
 
 				<div class="flex flex-col">
-					<span class="text-sm opacity-75">40.990463, 29.136827</span>
-					<h1 class="text-9xl font-bold pb-3 leading-[0.8]">Who <span class="whitespace-nowrap">am I?</span></h1>
+					<h1 class="text-9xl font-bold pb-3 leading-[0.8]">
+						<span id="who" class="whitespace-nowrap">Who</span> 
+						<span id="am-i" class="whitespace-nowrap">am I?</span>
+					</h1>
 					<p class="opacity-80 max-w-[600px]">
 						Metehan is a passionate interface and experience designer from Istanbul, Turkey. I’m working on mobile application and web design project. If you need more detail you can see my
 					</p>
@@ -148,6 +150,33 @@ import Layout from '../layouts/Layout.astro';
 	</main>
 </Layout>
 
+<script>
+	stepShow('#who');
+	stepShow('#am-i');
+
+	function stepShow(selector: string) {
+		const el = document.querySelector(selector);
+		if (el instanceof HTMLElement) {
+			const text = el.innerText;
+			el.classList.add('waviy');
+			el.innerHTML = '';
+
+			for (let i = 0; i < text.length; i++) {
+				const word = text[i];
+				const span = document.createElement('span');
+				span.setAttribute('style', `--i:${i + 1}`);
+				span.classList.add('word');
+
+				span.innerHTML = word === ' ' 
+					? '&nbsp;'
+					: word;
+
+				el.appendChild(span);
+			}
+		}
+	}
+</script>
+
 <style lang="scss">
 .sect {
 	@apply p-4 md:p-20 py-6;
@@ -183,6 +212,30 @@ import Layout from '../layouts/Layout.astro';
 
   50% {
     transform: translateY(10px);
+  }
+}
+</style>
+
+<style is:global>
+.waviy .word {
+	opacity: 0;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  animation: waviy 1s ;
+	animation-fill-mode: forwards;
+  animation-delay: calc(.1s * var(--i));
+  
+}
+@keyframes waviy {
+  from {
+		opacity: 0;
+    transform: scaleX(-1)
+  }
+  to {
+		opacity: 1;
+    transform: scaleX(1)
   }
 }
 </style>
