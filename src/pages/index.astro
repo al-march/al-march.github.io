@@ -16,12 +16,24 @@ import Layout from '../layouts/Layout.astro';
 				<div class="flex-1"></div>
 
 				<div class="flex flex-col">
-					<h1 class="text-9xl font-bold pb-3 leading-[0.8]">
+					<a 
+						class="text-md pl-1 z-10 underline opacity-60 cursor-pointer"
+						href="https://github.com/al-march"
+						target="_blank"
+					>
+						al-march
+					</a>
+					<h1 class="text-9xl font-bold pb-2">
 						<span id="who" class="whitespace-nowrap">Who</span> 
 						<span id="am-i" class="whitespace-nowrap">am I?</span>
 					</h1>
-					<p class="opacity-80 max-w-[600px]">
-						Metehan is a passionate interface and experience designer from Istanbul, Turkey. I’m working on mobile application and web design project. If you need more detail you can see my
+					<p class="opacity-80 max-w-[600px] pl-1 show-late">
+						My name is Alexander and I am a frontend developer with a focus on Angular.
+						<br>
+						I have more than 4 years of commercial experience. 
+						I have also worked with many other technologies in the frontend world. 
+						I try to keep myself up to date and am constantly 
+						looking for new ways to improve my competencies.
 					</p>
 				</div>
 
@@ -217,6 +229,13 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <style is:global>
+.show-late {
+	opacity: 0;
+	animation: show .7s ;
+	animation-fill-mode: forwards;
+	animation-delay: 1s;
+}
+
 .waviy .word {
 	opacity: 0;
   position: relative;
@@ -226,8 +245,8 @@ import Layout from '../layouts/Layout.astro';
   animation: waviy 1s ;
 	animation-fill-mode: forwards;
   animation-delay: calc(.1s * var(--i));
-  
 }
+
 @keyframes waviy {
   from {
 		opacity: 0;
@@ -237,5 +256,14 @@ import Layout from '../layouts/Layout.astro';
 		opacity: 1;
     transform: scaleX(1)
   }
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 </style>
