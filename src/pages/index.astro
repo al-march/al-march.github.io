@@ -16,13 +16,15 @@ import Layout from '../layouts/Layout.astro';
 				<div class="flex-1"></div>
 
 				<div class="flex flex-col">
-					<a 
-						class="text-md pl-1 z-10 underline opacity-60 cursor-pointer"
-						href="https://github.com/al-march"
-						target="_blank"
-					>
-						al-march
-					</a>
+					<span class="opacity-70">
+						<a 
+							class="text-md pl-1 z-10 underline cursor-pointer show-late"
+							href="https://github.com/al-march"
+							target="_blank"
+						>
+							al-march
+						</a>
+					</span>
 					<h1 class="text-9xl font-bold pb-2">
 						<span id="who" class="whitespace-nowrap">Who</span> 
 						<span id="am-i" class="whitespace-nowrap">am I?</span>
@@ -49,21 +51,41 @@ import Layout from '../layouts/Layout.astro';
 		<section id="sect-1" class="min-h-screen p-4 md:p-20 py-6 flex items-center bg-[#F6F7FB]">
 			<div class="w-full flex flex-col-reverse md:flex-row gap-4 justify-between items-center">
 				<article class="flex flex-col gap-2 flex-1">
-					<span class="text-sm opacity-70">Sept 3 2021</span>
-					<h2 class="font-bold text-2xl">VK</h2>
-					<p class="max-w-[390px]">
-						This concept is a news app. I have specified a limited color palette to give users maximum focus on the content. I used a serif font as I thought it would be suitable for a news app
-					</p>
+					<header class="leading-6">
+						<span class="text-sm opacity-70">Sept 3 2021</span>
+						<h2 class="font-bold text-2xl">VK</h2>
+					</header>
 
-					<article class="flex gap-2 items-center">
-						<p class="opacity-60">Stack: </p>
+					<ul class="flex flex-col gap-4">
+						<li class="max-w-[390px]">
+							<p class="opacity-60">Description: </p>
 
-						<div class="opacity-80">
-							<span>Angular</span>,
-							<span>React</span>,
-							<span>Java</span>
-						</div>
-					</article>
+							<div class="opacity-80">
+								The largest company in Russia with a wide range 
+								of competencies in different areas of development.
+							</div>
+						</li>
+						<li>
+							<p class="opacity-60">Job duties: </p>
+
+							<div class="opacity-80">
+								<ol class="pl-4 list-disc leading-5">
+									<li>Development of administrative panels</li>
+									<li>Creating NPM libraries</li>
+									<li>Designing the architecture of Frontend applications</li>
+								</ol>
+							</div>
+						</li>
+						<li>
+							<p class="opacity-60">Stack: </p>
+
+							<div class="opacity-80">
+								<span>Angular</span>,
+								<span>React</span>,
+								<span>Java</span>
+							</div>
+						</li>
+					</ul>
 
 					<a class="te underline" href="#">See more</a>
 				</article>
@@ -77,20 +99,41 @@ import Layout from '../layouts/Layout.astro';
 		<section id="sect-2" class="min-h-screen p-4 md:p-20 py-6 flex items-center bg-[#FFF9FA]">
 			<div class="w-full flex flex-col-reverse md:flex-row gap-4 justify-between items-center">
 				<article class="flex flex-col gap-2 flex-1">
-					<span class="text-sm opacity-70">Sep 20 2020 — Aug 10 2021</span>
-					<h2 class="font-bold text-2xl">MTS</h2>
-					<p class="max-w-[390px]">
-						This concept is a news app. I have specified a limited color palette to give users maximum focus on the content. I used a serif font as I thought it would be suitable for a news app
-					</p>
+					<header class="leading-6">
+						<span class="text-sm opacity-70">Sep 20 2020 — Aug 10 2021</span>
+						<h2 class="font-bold text-2xl">MTS</h2>
+					</header>
 
-					<article class="flex gap-2 items-center">
-						<p class="opacity-60">Stack: </p>
+					<ul class="flex flex-col gap-4">
+						<li class="max-w-[390px]">
+							<p class="opacity-60">Description: </p>
 
-						<div class="opacity-80">
-							<span>Angular</span>,
-							<span>Node.js</span>
-						</div>
-					</article>
+							<div class="opacity-80">
+								Large telecom company developing its own IT infrastructure
+							</div>
+						</li>
+						<li>
+							<p class="opacity-60">Job duties: </p>
+
+							<div class="opacity-80">
+								<ol class="pl-4 list-disc leading-5">
+									<li>Development of the company's internal service</li>
+									<li>Writing TOR for Rest API</li>
+									<li>Technical debt description</li>
+								</ol>
+							</div>
+						</li>
+						<li>
+							<p class="opacity-60">Stack: </p>
+
+							<div class="opacity-80">
+								<span>Angular</span>,
+								<span>Node.js</span>,
+								<span>NgXs</span>,
+								<span>Angular Material</span>
+							</div>
+						</li>
+					</ul>
 
 					<a class="te underline" href="#">See more</a>
 				</article>
@@ -104,21 +147,41 @@ import Layout from '../layouts/Layout.astro';
 		<section id="sect-3" class="min-h-screen p-4 md:p-20 py-6 flex items-center bg-[#ECF1EF]">
 			<div class="w-full flex flex-col-reverse md:flex-row gap-4 justify-between items-center">
 				<article class="flex flex-col gap-2 flex-1">
-					<span class="text-sm opacity-70">Feb 12 2018 — Aug 30 2020</span>
-					<h2 class="font-bold text-2xl">FMedia</h2>
-					<p class="max-w-[390px]">
-						This concept is a news app. I have specified a limited color palette to give users maximum focus on the content. I used a serif font as I thought it would be suitable for a news app
-					</p>
+					<header class="leading-6">
+						<span class="text-sm opacity-70">Feb 12 2018 — Aug 30 2020</span>
+						<h2 class="font-bold text-2xl">FMedia</h2>
+					</header>
 
-					<article class="flex gap-2 items-center">
-						<p class="opacity-60">Stack: </p>
+					<ul class="flex flex-col gap-4">
+						<li class="max-w-[390px]">
+							<p class="opacity-60">Description: </p>
 
-						<div class="opacity-80">
-							<span>Angular</span>,
-							<span>Go</span>,
-							<span>Docker</span>,
-						</div>
-					</article>
+							<div class="opacity-80">
+								Internet Marketing Company
+							</div>
+						</li>
+						<li>
+							<p class="opacity-60">Job duties: </p>
+
+							<div class="opacity-80">
+								<ol class="pl-4 list-disc leading-5">
+									<li>Development of the admin panel</li>
+									<li>Creation of promotional websites</li>
+									<li>Desktop application design</li>
+								</ol>
+							</div>
+						</li>
+						<li>
+							<p class="opacity-60">Stack: </p>
+
+							<div class="opacity-80">
+								<span>Angular</span>,
+								<span>Docker</span>,
+								<span>Electron</span>,
+								<span>Angular Material</span>
+							</div>
+						</li>
+					</ul>
 
 					<a class="te underline" href="#">See more</a>
 				</article>
@@ -263,7 +326,7 @@ import Layout from '../layouts/Layout.astro';
 		opacity: 0;
 	}
 	to {
-		opacity: 1;
+		opacity: inherit;
 	}
 }
 </style>
