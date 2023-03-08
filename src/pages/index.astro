@@ -226,10 +226,10 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-	stepShow('#who');
-	stepShow('#am-i');
+	letterAnimation('#who');
+	letterAnimation('#am-i');
 
-	function stepShow(selector: string) {
+	function letterAnimation(selector: string) {
 		const el = document.querySelector(selector);
 		if (el instanceof HTMLElement) {
 			const text = el.innerText;
@@ -241,7 +241,7 @@ import Layout from '../layouts/Layout.astro';
 				const span = document.createElement('span');
 				span.setAttribute('style', `--i:${i + 1}`);
 				span.classList.add('word');
-
+				
 				span.innerHTML = word === ' ' 
 					? '&nbsp;'
 					: word;
